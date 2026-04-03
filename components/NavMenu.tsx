@@ -62,7 +62,7 @@ export default function NavMenu() {
               // 🌟 關鍵修改：
               // 1. 把 h-auto 換成 h-[50px] (這個數字可以自由調整，例如 45px 或 60px)
               // 2. 把 object-contain 換成 object-cover，這樣圖片就會像被放進一個固定高度的畫框裡，不會變形！
-              className="w-full h-[50px] object-cover rounded-xl" 
+              className="w-full h-[60px] object-cover rounded-xl" 
             />
           </Link>
         );
