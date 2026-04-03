@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
-import NavMenu from "../components/NavMenu"; // 🌟 1. 匯入剛剛寫好的導覽列元件 (請確認路徑正確)
+import NavMenu from "../components/NavMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,10 +31,11 @@ export default function RootLayout({
     >
       <body className="bg-slate-200 font-sans text-gray-800 md:h-screen p-4 md:p-8 md:overflow-hidden flex flex-col">
         
-        <div className="flex flex-col md:flex-row w-full max-w-7xl mx-auto gap-4 md:gap-6 h-full">
+        {/* 🌟 融合教授的邏輯：拔除 max-w-7xl，讓容器可以在大螢幕時自由往左右延伸，不再變細長！ */}
+        <div className="flex flex-col md:flex-row w-full h-full gap-4 md:gap-6">
 
           {/* ================= 左邊：個人資訊與導覽列 ================= */}
-          <div className="bg-white w-full md:w-[260px] md:h-full rounded-3xl shadow-lg flex flex-col py-10 px-5 md:py-12 z-10 shrink-0 md:overflow-y-auto"> 
+          <div className="bg-white w-full md:w-[260px] md:h-full rounded-3xl shadow-lg flex flex-col py-10 px-5 md:py-12 z-100 shrink-0 md:overflow-y-auto"> 
 
             {/* 1. 大頭貼 */}
             <div className="flex justify-center items-center w-full mb-6 shrink-0">
@@ -63,7 +64,6 @@ export default function RootLayout({
             </div>
             
             {/* 4. 網站導覽選單 */}
-            {/* 🌟 2. 這裡原本落落長的程式碼，現在變成短短一行，超乾淨！ */}
             <NavMenu />
 
           </div>
