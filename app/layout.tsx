@@ -29,9 +29,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="bg-slate-200 font-sans text-gray-800 md:h-screen p-4 md:p-8 md:overflow-hidden flex flex-col">
+      {/* 👇👇👇 只有這裡改變了：設定背景圖片 👇👇👇 */}
+      <body 
+        className="font-sans text-gray-800 md:h-screen p-4 md:p-8 md:overflow-hidden flex flex-col bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: "url('/bg.png')" }}
+      >
+      {/* 👆👆👆 只有這裡改變了：設定背景圖片 👆👆👆 */}
         
-        {/* 🌟 融合教授的邏輯：拔除 max-w-7xl，讓容器可以在大螢幕時自由往左右延伸，不再變細長！ */}
         <div className="flex flex-col md:flex-row w-full h-full gap-4 md:gap-6">
 
           {/* ================= 左邊：個人資訊與導覽列 ================= */}
