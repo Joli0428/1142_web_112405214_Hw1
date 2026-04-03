@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Image placeholder background for pages using skeleton-style loading */
+.page-img-placeholder img {
+  background-color: #e5e7eb; /* gray-200 */
+}
