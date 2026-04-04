@@ -4,18 +4,22 @@ import { useState, useEffect } from "react";
 import TextType from "../../components/TextType"; 
 import LogoLoop from "../../components/LogoLoop"; 
 
-// 引入保證安全的圖示
+// 🌟 引入保證安全的圖示 (新增 Vercel)
 import { 
   SiFigma, 
   SiPython, 
   SiPostgresql, 
   SiGithub, 
   SiDocker,
-  SiNotion,    // 🌟 新增 Notion
-  SiCanva      // 🌟 新增 Canva
+  SiNotion,
+  SiCanva,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiGoogleanalytics,
+  SiVercel
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc"; 
-// 🌟 為了保持 Office 系列的一致性，統一使用 Remix Icons
 import { RiFileExcel2Line, RiFileWord2Line, RiFilePpt2Line } from "react-icons/ri"; 
 import { IoLogoTableau } from "react-icons/io5"; 
 
@@ -29,18 +33,23 @@ export default function About() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 🌟 更新後的 Icon 清單 (移除 Lightroom, Cursor，加入 Notion, Canva, Word, PPT)
+  // 🌟 加上 Vercel！
   const techLogos = [
+    { node: <SiNextdotjs size={36} />, title: "Next.js", href: "https://nextjs.org/" },
+    { node: <SiReact size={36} />, title: "React", href: "https://react.dev/" },
+    { node: <SiTailwindcss size={36} />, title: "Tailwind CSS", href: "https://tailwindcss.com/" },
+    { node: <SiVercel size={36} />, title: "Vercel", href: "https://vercel.com/" },
+    { node: <SiPython size={36} />, title: "Python", href: "https://www.python.org/" },
+    { node: <IoLogoTableau size={36} />, title: "Tableau", href: "https://www.tableau.com/" }, 
+    { node: <SiGoogleanalytics size={36} />, title: "Google Analytics", href: "https://marketingplatform.google.com/about/analytics/" },
+    { node: <SiPostgresql size={36} />, title: "PostgreSQL", href: "https://www.postgresql.org/" },
     { node: <SiFigma size={36} />, title: "Figma", href: "https://www.figma.com/" },
     { node: <SiCanva size={36} />, title: "Canva", href: "https://www.canva.com/" },
     { node: <SiNotion size={36} />, title: "Notion", href: "https://www.notion.so/" },
-    { node: <SiPython size={36} />, title: "Python", href: "https://www.python.org/" },
-    { node: <VscVscode size={36} />, title: "VS Code", href: "https://code.visualstudio.com/" },
-    { node: <SiPostgresql size={36} />, title: "PostgreSQL", href: "https://www.postgresql.org/" },
-    { node: <IoLogoTableau size={36} />, title: "Tableau", href: "https://www.tableau.com/" }, 
     { node: <RiFileWord2Line size={36} />, title: "Word", href: "https://www.microsoft.com/microsoft-365/word" },
     { node: <RiFilePpt2Line size={36} />, title: "PowerPoint", href: "https://www.microsoft.com/microsoft-365/powerpoint" },
     { node: <RiFileExcel2Line size={36} />, title: "Excel", href: "https://www.microsoft.com/microsoft-365/excel" },
+    { node: <VscVscode size={36} />, title: "VS Code", href: "https://code.visualstudio.com/" },
     { node: <SiGithub size={36} />, title: "GitHub", href: "https://github.com/" },
     { node: <SiDocker size={36} />, title: "Docker", href: "https://www.docker.com/" },
   ];
@@ -105,9 +114,9 @@ export default function About() {
 
       {/* 跑馬燈工具技能區塊 */}
       <div className="mt-4 md:mt-0 w-full">
-        {/* 🌟 調整這裡的 mb (margin-bottom) 控制標題與 Icon 之間的距離 */}
+        {/* 🌟 標題改為誠懇的 Tools I've Used */}
         <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-6 uppercase tracking-wider text-center md:text-left">
-          Tools & Tech I've Explored
+          Tools & Tech I've Used:
         </h3>
         
         {/* 將資料傳入 LogoLoop 元件 */}
