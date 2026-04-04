@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import TextType from "../../components/TextType"; 
 import LogoLoop from "../../components/LogoLoop"; 
 
-// 🌟 引入保證安全的圖示組合 (避開名稱常變動的特定商標)
+// 引入保證安全的圖示組合 (避開名稱常變動的特定商標)
 import { 
   SiFigma, 
   SiPython, 
@@ -27,7 +27,7 @@ export default function About() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 🌟 重新綁定穩定版 Icon 的清單
+  // 使用安全的 Icon 建立清單
   const techLogos = [
     { node: <FaCameraRetro size={36} />, title: "LightRoom" },
     { node: <SiFigma size={36} />, title: "Figma" },
@@ -43,10 +43,11 @@ export default function About() {
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-6 md:px-6 md:py-8 animate-in fade-in duration-700 overflow-x-hidden">
+    // 🌟 1. 縮小最外層的上下 padding (從 py-6 md:py-8 改為 py-4 md:py-6)
+    <div className="w-full max-w-5xl mx-auto px-4 py-4 md:px-6 md:py-6 animate-in fade-in duration-700 overflow-x-hidden">
       
       {/* 標題區塊 */}
-      <div className="mb-2 h-12 flex items-center">
+      <div className="mb-1 h-12 flex items-center">
         <TextType 
           as="h1"
           text={["ABOUT ME"]} 
@@ -57,14 +58,17 @@ export default function About() {
         />
       </div>
 
-      <h2 className="text-lg md:text-xl text-gray-900 font-medium italic mb-6 tracking-wide">
+      {/* 🌟 2. 縮小副標題的 margin-bottom (從 mb-6 改為 mb-4) */}
+      <h2 className="text-lg md:text-xl text-gray-900 font-medium italic mb-4 tracking-wide">
         "我相信，如果每個人都充滿好奇心，世界會更美好"
       </h2>
 
-      <hr className="border-gray-400 mb-8 md:mb-10" />
+      {/* 🌟 3. 縮小分隔線的 margin-bottom (從 mb-8 md:mb-10 改為 mb-6 md:mb-8) */}
+      <hr className="border-gray-400 mb-6 md:mb-8" />
 
       {/* 核心排版：手機版垂直排列，平板以上 12 欄網格 */}
-      <div className="flex flex-col md:grid md:grid-cols-12 gap-8 md:gap-12 mb-16">
+      {/* 🌟 4. 縮小這個區塊的 margin-bottom (從 mb-16 改為 mb-8) */}
+      <div className="flex flex-col md:grid md:grid-cols-12 gap-8 md:gap-12 mb-8">
         
         {/* 左側 / 上方：自我介紹內文 */}
         <div className="md:col-span-8 space-y-6 text-gray-700 leading-loose text-base md:text-lg text-justify">
@@ -101,13 +105,15 @@ export default function About() {
       </div>
 
       {/* 跑馬燈工具技能區塊 */}
-      <div className="mt-8 md:mt-0 w-full">
-        <h3 className="text-xl font-bold text-gray-900 mb-8 uppercase tracking-wider text-center md:text-left">
+      <div className="mt-4 md:mt-0 w-full">
+        {/* 🌟 5. 縮小標題的 margin-bottom (從 mb-8 改為 mb-4) */}
+        <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4 uppercase tracking-wider text-center md:text-left">
           Tools & Tech I've Explored
         </h3>
         
         {/* 將資料傳入 LogoLoop 元件 */}
         <div className="w-full text-gray-700">
+          {/* @ts-ignore */}
           <LogoLoop logos={techLogos} />
         </div>
       </div>
