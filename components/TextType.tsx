@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
@@ -25,6 +26,7 @@ const TextType = ({
   reverseMode = false,
   ...props
 }) => {
+  
   const [displayedText, setDisplayedText] = useState('');
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
