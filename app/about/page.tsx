@@ -4,18 +4,20 @@ import { useState, useEffect } from "react";
 import TextType from "../../components/TextType"; 
 import LogoLoop from "../../components/LogoLoop"; 
 
-// 引入保證安全的圖示組合 (避開名稱常變動的特定商標)
+// 引入保證安全的圖示
 import { 
   SiFigma, 
   SiPython, 
-  SiDavinciresolve, 
   SiPostgresql, 
   SiGithub, 
-  SiDocker 
+  SiDocker,
+  SiNotion,    // 🌟 新增 Notion
+  SiCanva      // 🌟 新增 Canva
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc"; 
-import { FaFileExcel, FaMousePointer, FaCameraRetro } from "react-icons/fa"; 
-import { BsBarChartFill } from "react-icons/bs";
+// 🌟 為了保持 Office 系列的一致性，統一使用 Remix Icons
+import { RiFileExcel2Line, RiFileWord2Line, RiFilePpt2Line } from "react-icons/ri"; 
+import { IoLogoTableau } from "react-icons/io5"; 
 
 export default function About() {
   const [isCursorVisible, setIsCursorVisible] = useState(true);
@@ -27,23 +29,23 @@ export default function About() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 使用安全的 Icon 建立清單
+  // 🌟 更新後的 Icon 清單 (移除 Lightroom, Cursor，加入 Notion, Canva, Word, PPT)
   const techLogos = [
-    { node: <FaCameraRetro size={36} />, title: "LightRoom" },
-    { node: <SiFigma size={36} />, title: "Figma" },
-    { node: <SiPython size={36} />, title: "Python" },
-    { node: <FaMousePointer size={36} />, title: "Cursor" },
-    { node: <VscVscode size={36} />, title: "VS Code" },
-    { node: <SiDavinciresolve size={36} />, title: "DaVinci Resolve" },
-    { node: <SiPostgresql size={36} />, title: "PostgreSQL" },
-    { node: <BsBarChartFill size={36} />, title: "Tableau" },
-    { node: <FaFileExcel size={36} />, title: "Excel" },
-    { node: <SiGithub size={36} />, title: "GitHub" },
-    { node: <SiDocker size={36} />, title: "Docker" },
+    { node: <SiFigma size={36} />, title: "Figma", href: "https://www.figma.com/" },
+    { node: <SiCanva size={36} />, title: "Canva", href: "https://www.canva.com/" },
+    { node: <SiNotion size={36} />, title: "Notion", href: "https://www.notion.so/" },
+    { node: <SiPython size={36} />, title: "Python", href: "https://www.python.org/" },
+    { node: <VscVscode size={36} />, title: "VS Code", href: "https://code.visualstudio.com/" },
+    { node: <SiPostgresql size={36} />, title: "PostgreSQL", href: "https://www.postgresql.org/" },
+    { node: <IoLogoTableau size={36} />, title: "Tableau", href: "https://www.tableau.com/" }, 
+    { node: <RiFileWord2Line size={36} />, title: "Word", href: "https://www.microsoft.com/microsoft-365/word" },
+    { node: <RiFilePpt2Line size={36} />, title: "PowerPoint", href: "https://www.microsoft.com/microsoft-365/powerpoint" },
+    { node: <RiFileExcel2Line size={36} />, title: "Excel", href: "https://www.microsoft.com/microsoft-365/excel" },
+    { node: <SiGithub size={36} />, title: "GitHub", href: "https://github.com/" },
+    { node: <SiDocker size={36} />, title: "Docker", href: "https://www.docker.com/" },
   ];
 
   return (
-    // 🌟 1. 縮小最外層的上下 padding (從 py-6 md:py-8 改為 py-4 md:py-6)
     <div className="w-full max-w-5xl mx-auto px-4 py-4 md:px-6 md:py-6 animate-in fade-in duration-700 overflow-x-hidden">
       
       {/* 標題區塊 */}
@@ -58,16 +60,13 @@ export default function About() {
         />
       </div>
 
-      {/* 🌟 2. 縮小副標題的 margin-bottom (從 mb-6 改為 mb-4) */}
       <h2 className="text-lg md:text-xl text-gray-900 font-medium italic mb-4 tracking-wide">
         "我相信，如果每個人都充滿好奇心，世界會更美好"
       </h2>
 
-      {/* 🌟 3. 縮小分隔線的 margin-bottom (從 mb-8 md:mb-10 改為 mb-6 md:mb-8) */}
       <hr className="border-gray-400 mb-6 md:mb-8" />
 
       {/* 核心排版：手機版垂直排列，平板以上 12 欄網格 */}
-      {/* 🌟 4. 縮小這個區塊的 margin-bottom (從 mb-16 改為 mb-8) */}
       <div className="flex flex-col md:grid md:grid-cols-12 gap-8 md:gap-12 mb-8">
         
         {/* 左側 / 上方：自我介紹內文 */}
@@ -106,8 +105,8 @@ export default function About() {
 
       {/* 跑馬燈工具技能區塊 */}
       <div className="mt-4 md:mt-0 w-full">
-        {/* 🌟 5. 縮小標題的 margin-bottom (從 mb-8 改為 mb-4) */}
-        <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4 uppercase tracking-wider text-center md:text-left">
+        {/* 🌟 調整這裡的 mb (margin-bottom) 控制標題與 Icon 之間的距離 */}
+        <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-6 uppercase tracking-wider text-center md:text-left">
           Tools & Tech I've Explored
         </h3>
         
