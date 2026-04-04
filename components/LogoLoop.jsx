@@ -118,7 +118,7 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
 export const LogoLoop = memo(
   ({
     logos,
-    speed = 66,
+    speed = 50,
     direction = 'right',
     width = '100%',
     logoHeight = 28,

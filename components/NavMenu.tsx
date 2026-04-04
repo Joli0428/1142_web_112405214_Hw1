@@ -1,73 +1,59 @@
-"use client"; 
+"use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation"; // 用來判斷目前在哪個網頁
+import { FiHome, FiUser, FiLayout, FiBarChart2, FiCamera } from "react-icons/fi"; // 引入極簡風格的圖示
 
 export default function NavMenu() {
   const pathname = usePathname();
 
-  const navItems = [
-    { 
-      name: "首頁", 
-      path: "/",
-      defaultImg: "/nav-home.png",
-      activeImg: "/nav-home-active.png"
-    },
-    { 
-      name: "關於我", 
-      path: "/about",
-      defaultImg: "/nav-about.png",
-      activeImg: "/nav-about-active.png"
-    },
-    { 
-      name: "作品集", 
-      path: "/works",
-      defaultImg: "/nav-works.png",
-      activeImg: "/nav-works-active.png"
-    },
-    { 
-      name: "數據分析", 
-      path: "/analytics",
-      defaultImg: "/nav-analytics.png",
-      activeImg: "/nav-analytics-active.png"
-    },
-    { 
-      name: "攝影作品", 
-      path: "/photography",
-      defaultImg: "/nav-photography.png",
-      activeImg: "/nav-photography-active.png"
-    },
+  // 定義你的選單項目與對應的路徑
+  const menuItems = [
+    { name: "Home", path: "/", icon: <FiHome size={20} /> },
+    { name: "About", path: "/about", icon: <FiUser size={20} /> },
+    { name: "Works", path: "/works", icon: <FiLayout size={20} /> },
+    { name: "Analytics", path: "/analytics", icon: <FiBarChart2 size={20} /> },
+    { name: "Photography", path: "/photography", icon: <FiCamera size={20} /> },
   ];
 
   return (
-    // 💡 把原本的 gap-4 改成 gap-3，讓矮一點的按鈕排起來更緊湊好看
-    <div className="flex flex-col gap-3 w-full">
-      
-      {navItems.map((item) => {
+    <nav className="flex flex-col gap-2 w-full">
+      {menuItems.map((item) => {
+        // 判斷這個按鈕是不是目前的頁面
         const isActive = pathname === item.path;
 
         return (
-          <Link 
-            href={item.path} 
-            key={item.path} 
-            className="block w-full transition-transform duration-200 hover:scale-105"
+          <Link
+            key={item.name}
+            href={item.path}
+            className={`group flex items-center gap-4 px-5 py-3.5 rounded-2xl transition-all duration-300 ${
+              isActive
+                ? "bg-gray-50 shadow-sm scale-[1.02]" // 目前頁面的背景樣式
+                : "hover:bg-gray-50 hover:scale-[1.02]" // 滑鼠懸浮的背景樣式
+            }`}
           >
-            <Image
-              src={isActive ? item.activeImg : item.defaultImg}
-              alt={item.name}
-              width={300} 
-              height={30} 
-              priority 
-              // 🌟 關鍵修改：
-              // 1. 把 h-auto 換成 h-[50px] (這個數字可以自由調整，例如 45px 或 60px)
-              // 2. 把 object-contain 換成 object-cover，這樣圖片就會像被放進一個固定高度的畫框裡，不會變形！
-              className="w-full h-[85px] object-cover rounded-xl" 
-            />
+            {/* 圖示區塊 */}
+            <div
+              className={`transition-colors duration-300 ${
+                isActive ? "text-orange-500" : "text-gray-400 group-hover:text-gray-800"
+              }`}
+            >
+              {item.icon}
+            </div>
+
+            {/* 文字區塊 */}
+            <span
+              className={`tracking-wider transition-all duration-300 ${
+                isActive
+                  ? "font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-purple-600" // 目前頁面套用漸層與極粗體
+                  : "font-bold text-gray-500 group-hover:text-gray-800" // 平常是灰色，懸浮變深色
+              }`}
+            >
+              {item.name}
+            </span>
           </Link>
         );
       })}
-
-    </div>
+    </nav>
   );
 }
