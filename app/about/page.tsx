@@ -113,7 +113,7 @@ export default function About() {
       </div>
 
       {/* 跑馬燈工具技能區塊 */}
-      <div className="mt-4 md:mt-0 w-full">
+      <div className="mt-4 md:mt-10 w-full">
         {/* 🌟 標題改為誠懇的 Tools I've Used */}
         <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-6 uppercase tracking-wider text-center md:text-left">
           Tools & Tech I've Used:

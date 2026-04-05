@@ -44,7 +44,7 @@ export default function RootLayout({
 
           {/* ================= 左邊：個人資訊與導覽列 ================= */}
           {/* 🌟 1. 縮小最外層的上下 padding: 從 py-10 px-5 md:py-12 改為 py-6 px-5 md:py-8 */}
-          <div className="bg-white w-full md:w-[260px] md:h-full rounded-3xl shadow-lg flex flex-col py-6 px-5 md:py-8 z-10 shrink-0 md:overflow-y-auto"> 
+          <div className="bg-white w-full md:w-[260px] md:h-full rounded-3xl shadow-lg flex flex-col py-6 px-5 md:py-14 z-10 shrink-0 md:overflow-y-auto"> 
 
             {/* 🌟 2. 縮小大頭貼下方的 margin: 從 mb-6 改為 mb-4 */}
             <div className="flex justify-center items-center w-full mb-4 shrink-0">
