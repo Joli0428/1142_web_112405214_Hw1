@@ -25,7 +25,6 @@ export default function Photography() {
   const [isClosing, setIsClosing] = useState(false);
   const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
   
-  // 🌟 因為拿掉了雙層結構，這裡只需要一個狀態來控制 Modal 大圖的載入淡入
   const [modalImageLoaded, setModalImageLoaded] = useState(false);
 
   useEffect(() => {
@@ -75,22 +74,24 @@ export default function Photography() {
     }, 300); 
   };
 
+  // 🌟 已還原至「第16張加入的第一次排版順序」，並維持第16張是直圖 (height: 1200)
   const photos: Photo[] = [
-    { id: 1, img: "/photo1.png", width: 800, height: 533, title: "台北街頭光影", description: "捕捉雨後台北街頭的霓虹倒影，呈現城市夜晚的憂鬱與霓虹。", alt: "台北街頭光影" }, 
-    { id: 6, img: "/photo6.png", width: 800, height: 1200, title: "山間秘境", description: "於阿里山清晨捕捉的雲霧繚繞，寧靜而莊嚴的瞬間。", alt: "山間秘境" }, 
-    { id: 2, img: "/photo2.png", width: 800, height: 533, title: "海岸線的告白", description: "海浪輕拍沙灘，與遠處的夕陽構成一幅浪漫的畫作。", alt: "海岸線的告白" }, 
-    { id: 3, img: "/photo3.png", width: 800, height: 533, title: "古鎮餘暉", description: "九份山城的石階在落日下閃耀，記錄下光影交織的歷史痕跡。", alt: "古鎮餘暉" }, 
-    { id: 7, img: "/photo7.png", width: 800, height: 1200, title: "光影之塔", description: "城市建築的幾何線條與陽光切割，呈現出具現代感的強烈對比。", alt: "光影之塔" }, 
-    { id: 4, img: "/photo4.png", width: 800, height: 533, title: "森林的寂靜", description: "深入忘憂森林，被高聳的枯木圍繞，感受被大自然擁抱的寂靜。", alt: "森林的寂靜" }, 
-    { id: 5, img: "/photo5.png", width: 800, height: 533, title: "午後的貓", description: "淡水老街上悠閒地享受午後陽光的貓咪，眼神中滿是愜意。", alt: "午後的貓" }, 
-    { id: 8, img: "/photo8.png", width: 800, height: 1200, title: "抽象的光學", description: "運用散景效果捕捉的夜間光點，呈現夢幻且具詩意的視覺饗宴。", alt: "抽象的光學" }, 
-    { id: 9, img: "/photo9.png", width: 800, height: 533, title: "稻浪翩翩", description: "池上稻米成熟時的金色浪潮，隨著風展現生命的可貴。", alt: "稻浪翩翩" }, 
-    { id: 10, img: "/photo10.png", width: 800, height: 533, title: "工業之眼", description: "廢棄工廠內部的鏽蝕與光影，見證著時代變遷的殘缺之美。", alt: "工業之眼" }, 
-    { id: 14, img: "/photo14.png", width: 800, height: 1200, title: "人物側寫：匠人", description: "記錄老職人專注的神情與滿是歲月痕跡的雙手。", alt: "人物側寫：匠人" }, 
-    { id: 11, img: "/photo11.png", width: 800, height: 533, title: "雲端的相遇", description: "在合歡山主峰上與無邊雲海的震撼相遇。", alt: "雲端的相遇" }, 
-    { id: 12, img: "/photo12.png", width: 800, height: 533, title: "城市節奏", description: "快速道路上的車流光軌，記錄下這座城市的繁忙節奏。", alt: "城市節奏" }, 
-    { id: 13, img: "/photo13.png", width: 800, height: 533, title: "孤獨的樹", description: "在廣闊草原上獨自屹立的大樹，呈現出一種孤傲的美感。", alt: "孤獨的樹" }, 
-    { id: 15, img: "/photo15.png", width: 800, height: 533, title: "歲月靜好", description: "祖父母在鄉下老家悠閒對弈的溫馨畫面，是歲月最美的註腳。", alt: "歲月靜好" }, 
+    { id: 6, img: "/photo6.png", width: 800, height: 1200, title: "山間秘境", description: "於阿里山清晨捕捉的雲霧繚繞，寧靜而莊嚴的瞬間。", alt: "山間秘境" }, // 直
+    { id: 1, img: "/photo1.png", width: 800, height: 533, title: "台北街頭光影", description: "捕捉雨後台北街頭的霓虹倒影，呈現城市夜晚的憂鬱與霓虹。", alt: "台北街頭光影" }, // 橫
+    { id: 7, img: "/photo7.png", width: 800, height: 1200, title: "光影之塔", description: "城市建築的幾何線條與陽光切割，呈現出具現代感的強烈對比。", alt: "光影之塔" }, // 直
+    { id: 2, img: "/photo2.png", width: 800, height: 533, title: "海岸線的告白", description: "海浪輕拍沙灘，與遠處的夕陽構成一幅浪漫的畫作。", alt: "海岸線的告白" }, // 橫
+    { id: 8, img: "/photo8.png", width: 800, height: 1200, title: "抽象的光學", description: "運用散景效果捕捉的夜間光點，呈現夢幻且具詩意的視覺饗宴。", alt: "抽象的光學" }, // 直
+    { id: 3, img: "/photo3.png", width: 800, height: 533, title: "古鎮餘暉", description: "九份山城的石階在落日下閃耀，記錄下光影交織的歷史痕跡。", alt: "古鎮餘暉" }, // 橫
+    { id: 14, img: "/photo14.png", width: 800, height: 1200, title: "人物側寫：匠人", description: "記錄老職人專注的神情與滿是歲月痕跡的雙手。", alt: "人物側寫：匠人" }, // 直
+    { id: 4, img: "/photo4.png", width: 800, height: 533, title: "森林的寂靜", description: "深入忘憂森林，被高聳的枯木圍繞，感受被大自然擁抱的寂靜。", alt: "森林的寂靜" }, // 橫
+    { id: 5, img: "/photo5.png", width: 800, height: 533, title: "午後的貓", description: "淡水老街上悠閒地享受午後陽光的貓咪，眼神中滿是愜意。", alt: "午後的貓" }, // 橫
+    { id: 9, img: "/photo9.png", width: 800, height: 533, title: "稻浪翩翩", description: "池上稻米成熟時的金色浪潮，隨著風展現生命的可貴。", alt: "稻浪翩翩" }, // 橫
+    { id: 10, img: "/photo10.png", width: 800, height: 533, title: "工業之眼", description: "廢棄工廠內部的鏽蝕與光影，見證著時代變遷的殘缺之美。", alt: "工業之眼" }, // 橫
+    { id: 11, img: "/photo11.png", width: 800, height: 533, title: "雲端的相遇", description: "在合歡山主峰上與無邊雲海的震撼相遇。", alt: "雲端的相遇" }, // 橫
+    { id: 12, img: "/photo12.png", width: 800, height: 533, title: "城市節奏", description: "快速道路上的車流光軌，記錄下這座城市的繁忙節奏。", alt: "城市節奏" }, // 橫
+    { id: 13, img: "/photo13.png", width: 800, height: 533, title: "孤獨的樹", description: "在廣闊草原上獨自屹立的大樹，呈現出一種孤傲的美感。", alt: "孤獨的樹" }, // 橫
+    { id: 15, img: "/photo15.png", width: 800, height: 533, title: "歲月靜好", description: "祖父母在鄉下老家悠閒對弈的溫馨畫面，是歲月最美的註腳。", alt: "歲月靜好" }, // 橫
+    { id: 16, img: "/photo16.png", width: 800, height: 1200, title: "新增直式作品", description: "這是一張直式的攝影作品。", alt: "新增直式作品" }, // 直 (放在最後)
   ];
 
   return (
@@ -113,7 +114,7 @@ export default function Photography() {
 
       <hr className="border-gray-400 mb-8 md:mb-12 shrink-0" />
 
-      <div className="flex-grow w-full mb-12">
+      <div className="relative flex-grow w-full mb-12">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {photos.map((photo, index) => (
             <div 
@@ -141,11 +142,23 @@ export default function Photography() {
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none"></div>
             </div>
           ))}
+
+          {/* 🌟 電影金句圖卡，保留實體卡片的樣式，接在最後一張照片之後 */}
+          <div className="break-inside-avoid relative flex flex-col justify-center p-8 rounded-xl bg-gray-50 border border-gray-100 aspect-square sm:aspect-auto sm:h-full lg:aspect-square text-left hover:bg-gray-100 transition-colors duration-500 shadow-sm hover:shadow-md">
+            <blockquote className="mb-6">
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed font-serif italic mb-4 drop-shadow-sm">
+                "To see the world, things dangerous to come to, to see behind walls, draw closer, to find each other and to feel. That is the purpose of life."
+              </p>
+              <footer className="text-xs text-gray-500 font-medium tracking-wide text-right">
+                — The Secret Life of Walter Mitty (2013)
+              </footer>
+            </blockquote>
+          </div>
+
         </div>
       </div>
 
-      {/* 🌟 替換結尾標語 */}
-      <div ref={bottomRef} className="w-full flex flex-col items-center justify-center mt-auto mb-2 pt-12 pb-4 border-t border-gray-200 min-h-[100px] shrink-0">
+      <div ref={bottomRef} className="w-full flex flex-col items-center justify-center mt-auto mb-2 pt-4 md:pt-8 pb-4 border-t border-gray-200 min-h-[100px] shrink-0">
         {isBottomVisible && (
           <>
             <div className="mb-3 flex items-center justify-center">
@@ -191,7 +204,12 @@ export default function Photography() {
             </button>
 
             <div className="w-full h-64 md:h-80 lg:h-96 relative bg-gray-100 shrink-0">
-              {/* 🌟 核心修改：拿掉底層 img，只留 Image 處理淡入 */}
+              <img 
+                src={selectedPhoto.img}
+                alt="" 
+                className="absolute inset-0 w-full h-full object-cover blur-sm opacity-50" 
+              />
+
               <Image 
                 src={selectedPhoto.img} 
                 alt={selectedPhoto.title} 
