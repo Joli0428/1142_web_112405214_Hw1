@@ -76,22 +76,22 @@ export default function Photography() {
 
   // 🌟 已還原至「第16張加入的第一次排版順序」，並維持第16張是直圖 (height: 1200)
   const photos: Photo[] = [
-    { id: 6, img: "/photo6.png", width: 800, height: 1200, title: "山間秘境", description: "於阿里山清晨捕捉的雲霧繚繞，寧靜而莊嚴的瞬間。", alt: "山間秘境" }, // 直
-    { id: 1, img: "/photo1.png", width: 800, height: 533, title: "台北街頭光影", description: "捕捉雨後台北街頭的霓虹倒影，呈現城市夜晚的憂鬱與霓虹。", alt: "台北街頭光影" }, // 橫
-    { id: 7, img: "/photo7.png", width: 800, height: 1200, title: "光影之塔", description: "城市建築的幾何線條與陽光切割，呈現出具現代感的強烈對比。", alt: "光影之塔" }, // 直
-    { id: 2, img: "/photo2.png", width: 800, height: 533, title: "海岸線的告白", description: "海浪輕拍沙灘，與遠處的夕陽構成一幅浪漫的畫作。", alt: "海岸線的告白" }, // 橫
-    { id: 8, img: "/photo8.png", width: 800, height: 1200, title: "抽象的光學", description: "運用散景效果捕捉的夜間光點，呈現夢幻且具詩意的視覺饗宴。", alt: "抽象的光學" }, // 直
-    { id: 3, img: "/photo3.png", width: 800, height: 533, title: "古鎮餘暉", description: "九份山城的石階在落日下閃耀，記錄下光影交織的歷史痕跡。", alt: "古鎮餘暉" }, // 橫
-    { id: 14, img: "/photo14.png", width: 800, height: 1200, title: "人物側寫：匠人", description: "記錄老職人專注的神情與滿是歲月痕跡的雙手。", alt: "人物側寫：匠人" }, // 直
-    { id: 4, img: "/photo4.png", width: 800, height: 533, title: "森林的寂靜", description: "深入忘憂森林，被高聳的枯木圍繞，感受被大自然擁抱的寂靜。", alt: "森林的寂靜" }, // 橫
-    { id: 5, img: "/photo5.png", width: 800, height: 533, title: "午後的貓", description: "淡水老街上悠閒地享受午後陽光的貓咪，眼神中滿是愜意。", alt: "午後的貓" }, // 橫
-    { id: 9, img: "/photo9.png", width: 800, height: 533, title: "稻浪翩翩", description: "池上稻米成熟時的金色浪潮，隨著風展現生命的可貴。", alt: "稻浪翩翩" }, // 橫
-    { id: 10, img: "/photo10.png", width: 800, height: 533, title: "工業之眼", description: "廢棄工廠內部的鏽蝕與光影，見證著時代變遷的殘缺之美。", alt: "工業之眼" }, // 橫
-    { id: 11, img: "/photo11.png", width: 800, height: 533, title: "雲端的相遇", description: "在合歡山主峰上與無邊雲海的震撼相遇。", alt: "雲端的相遇" }, // 橫
-    { id: 12, img: "/photo12.png", width: 800, height: 533, title: "城市節奏", description: "快速道路上的車流光軌，記錄下這座城市的繁忙節奏。", alt: "城市節奏" }, // 橫
-    { id: 13, img: "/photo13.png", width: 800, height: 533, title: "孤獨的樹", description: "在廣闊草原上獨自屹立的大樹，呈現出一種孤傲的美感。", alt: "孤獨的樹" }, // 橫
-    { id: 15, img: "/photo15.png", width: 800, height: 533, title: "歲月靜好", description: "祖父母在鄉下老家悠閒對弈的溫馨畫面，是歲月最美的註腳。", alt: "歲月靜好" }, // 橫
-    { id: 16, img: "/photo16.png", width: 800, height: 1200, title: "新增直式作品", description: "這是一張直式的攝影作品。", alt: "新增直式作品" }, // 直 (放在最後)
+    { id: 6, img: "/photo6.png", width: 800, height: 1200, title: "歲月靜好", description: "走過無數山海才明白，最動人的風景，是安靜角落裡那份波瀾不驚的守候。", alt: "歲月靜好" }, // 直
+    { id: 1, img: "/photo1.png", width: 800, height: 533, title: "燈塔", description: "照亮孤寂的夜，指引迷航的人。你需要時，我都在。", alt: "燈塔" }, // 橫
+    { id: 7, img: "/photo7.png", width: 800, height: 1200, title: "千山鳥飛", description: "絕，萬徑人蹤滅。如果此為真，或許地球會平靜許多。", alt: "千山鳥飛" }, // 直
+    { id: 2, img: "/photo2.png", width: 800, height: 533, title: "賽博人生", description: "當電話取代了實體互動，總感覺內心空蕩蕩的。昔日不在。", alt: "賽博人生" }, // 橫
+    { id: 8, img: "/photo8.png", width: 800, height: 1200, title: "第一眼的山林", description: "來政大按下的第一張底片。傳奇的開端。有點自誇。", alt: "第一眼的山林" }, // 直
+    { id: 3, img: "/photo3.png", width: 800, height: 533, title: "望天思", description: "寂靜的午，淡藍的天，平靜的你我。飛鳥相與還。", alt: "望天思" }, // 橫
+    { id: 14, img: "/photo14.png", width: 800, height: 1200, title: "肖像", description: "深邃的眼珠，像是寶石。要小心幻影旅團。", alt: "肖像" }, // 直
+    { id: 4, img: "/photo4.png", width: 800, height: 533, title: "流與留", description: "千古長存是一種福？還是一種罪？又或是一種「芙」？", alt: "流與留" }, // 橫
+    { id: 5, img: "/photo5.png", width: 800, height: 533, title: "石虎", description: "是吧，是一隻石虎。一隻被命運玩弄的石虎。阿們。", alt: "石虎" }, // 橫
+    { id: 9, img: "/photo9.png", width: 800, height: 533, title: "最初的起點", description: "於大學第一間宿舍拍攝的底片。多少是一種記憶。模糊。", alt: "最初的起點" }, // 橫
+    { id: 10, img: "/photo10.png", width: 800, height: 533, title: "心的起點", description: "政大的第二張底片作品。上古時期的校園風格，多少有點懷舊的味道。", alt: "心的起點" }, // 橫
+    { id: 11, img: "/photo11.png", width: 800, height: 533, title: "燃盡（尚未）", description: "燃燒自己，照亮他人。生命中能遇到多少這樣的貴人呢？", alt: "燃盡（尚未）" }, // 橫
+    { id: 12, img: "/photo12.png", width: 800, height: 533, title: "活著", description: "人生的意義是什麼？我不知道。他不知道。你也不知道。", alt: "活著" }, // 橫
+    { id: 13, img: "/photo13.png", width: 800, height: 533, title: "獨站", description: "在廣闊展場上獨自屹立的陌生人，呈現出一種孤傲的美感。", alt: "獨站" }, // 橫
+    { id: 15, img: "/photo15.png", width: 800, height: 533, title: "生命的萎靡", description: "為了自我踐踏生命，是人類最擅長的事。自私的原罪。", alt: "生命的萎靡" }, // 橫
+    { id: 16, img: "/photo16.png", width: 800, height: 1200, title: "周湧秝", description: "我相信，如果每個人都充滿好奇心，世界會更美好。", alt: "周湧秝" }, // 直 (放在最後)
   ];
 
   return (
