@@ -15,11 +15,16 @@ interface Project {
 
 export default function Works() {
   const [isCursorVisible, setIsCursorVisible] = useState(true);
-  
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const [isBottomVisible, setIsBottomVisible] = useState(false);
+  const [isSecondLineVisible, setIsSecondLineVisible] = useState(false);
+
+  // 🌟 新增：當頁面載入時，強制捲動到最頂部
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,6 +33,7 @@ export default function Works() {
     return () => clearTimeout(timer);
   }, []);
 
+  // 監聽是否滑動到底部
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -45,6 +51,16 @@ export default function Works() {
 
     return () => observer.disconnect();
   }, []);
+
+  // 設定 1.8 秒後觸發第二行字
+  useEffect(() => {
+    if (isBottomVisible) {
+      const timer = setTimeout(() => {
+        setIsSecondLineVisible(true);
+      }, 1800);
+      return () => clearTimeout(timer);
+    }
+  }, [isBottomVisible]);
 
   const projects: Project[] = [
     {
@@ -97,7 +113,7 @@ export default function Works() {
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-4 md:px-6 md:py-6 animate-in fade-in duration-700 overflow-x-hidden relative">
+    <div className="w-full max-w-5xl mx-auto px-4 py-4 md:px-6 md:py-6 animate-in fade-in duration-700 overflow-x-hidden relative flex flex-col min-h-[calc(100vh-2rem)]">
       
       <div className="mb-1 min-h-[48px] flex items-center flex-wrap">
         <TextType 
@@ -116,7 +132,7 @@ export default function Works() {
 
       <hr className="border-gray-400 mb-6 md:mb-8" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12 flex-grow">
         {projects.map((project) => (
           <div 
             key={project.id} 
@@ -154,10 +170,8 @@ export default function Works() {
         ))}
       </div>
 
-      {/* ========================================= */}
-      {/* 🌟 修改了這裡的 margin 與 padding：mt-20 mb-2 pt-12 pb-4 */}
-      {/* ========================================= */}
-      <div ref={bottomRef} className="w-full flex flex-col items-center justify-center mt-20 mb-2 pt-12 pb-4 border-t border-gray-200 min-h-[100px]">
+      {/* 底部打字機結尾 (兩階段打字效果) */}
+      <div ref={bottomRef} className="w-full flex flex-col items-center justify-center mt-auto mb-2 pt-12 pb-4 border-t border-gray-200 min-h-[100px] shrink-0">
         {isBottomVisible && (
           <>
             <div className="mb-3 flex items-center justify-center">
@@ -170,15 +184,17 @@ export default function Works() {
                 showCursor={false}
               />
             </div>
-            <div className="flex items-center justify-center">
-              <TextType 
-                as="p"
-                text={["STAY CURIOUS ✦ 敬請期待"]} 
-                typingSpeed={120}
-                className="text-xs md:text-sm font-medium text-gray-400 tracking-[0.25em] text-center"
-                loop={false}
-                showCursor={true}
-              />
+            <div className="flex items-center justify-center min-h-[20px] md:min-h-[24px]">
+              {isSecondLineVisible && (
+                <TextType 
+                  as="p"
+                  text={["STAY CURIOUS ✦ 敬請期待"]} 
+                  typingSpeed={120}
+                  className="text-xs md:text-sm font-medium text-gray-400 tracking-[0.25em] text-center"
+                  loop={false}
+                  showCursor={true}
+                />
+              )}
             </div>
           </>
         )}
