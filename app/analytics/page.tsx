@@ -19,8 +19,10 @@ export default function Analytics() {
   const [isSecondLineVisible, setIsSecondLineVisible] = useState(false);
   
   const [selectedContent, setSelectedContent] = useState<ModalContent | null>(null);
+  
+  // 🌟 新增：控制退場動畫的狀態
+  const [isClosing, setIsClosing] = useState(false);
 
-  // 🌟 新增：當頁面載入時，強制捲動到最頂部
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -58,6 +60,15 @@ export default function Analytics() {
       return () => clearTimeout(timer);
     }
   }, [isBottomVisible]);
+
+  // 🌟 新增：處理 Modal 關閉的延遲函式
+  const closeModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedContent(null);
+      setIsClosing(false);
+    }, 300); // 對應 Tailwind duration-300
+  };
 
   const mainCoverContent: ModalContent = {
     imageUrl: "/cover.png",
@@ -181,7 +192,6 @@ export default function Analytics() {
           </div>
 
           <div className="w-full md:w-72 shrink-0 flex flex-col gap-6">
-            {/* 🌟 修改：專案亮點區塊改為優雅的紫色系 */}
             <div className="bg-purple-50/50 p-6 rounded-2xl border border-purple-100">
               <h4 className="text-base font-bold text-purple-900 mb-5">
                 專案亮點
@@ -255,17 +265,18 @@ export default function Analytics() {
         )}
       </div>
 
+      {/* 🌟 根據 isClosing 狀態動態切換 animate-in 與 animate-out */}
       {selectedContent && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300"
-          onClick={() => setSelectedContent(null)} 
+          className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm duration-300 ${isClosing ? "animate-out fade-out" : "animate-in fade-in"}`}
+          onClick={closeModal} 
         >
           <div 
-            className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300 relative flex flex-col max-h-[90vh]"
+            className={`bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl duration-300 relative flex flex-col max-h-[90vh] ${isClosing ? "animate-out zoom-out-95 fade-out" : "animate-in zoom-in-95 fade-in"}`}
             onClick={(e) => e.stopPropagation()} 
           >
             <button 
-              onClick={() => setSelectedContent(null)}
+              onClick={closeModal}
               className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-black/40 backdrop-blur-md text-white rounded-full hover:bg-black transition-colors"
             >
               <FiX size={18} />

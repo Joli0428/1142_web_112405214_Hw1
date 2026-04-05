@@ -16,12 +16,14 @@ interface Project {
 export default function Works() {
   const [isCursorVisible, setIsCursorVisible] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  
+  // 🌟 新增：控制 Modal 關閉動畫的狀態
+  const [isClosing, setIsClosing] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const [isBottomVisible, setIsBottomVisible] = useState(false);
   const [isSecondLineVisible, setIsSecondLineVisible] = useState(false);
 
-  // 🌟 新增：當頁面載入時，強制捲動到最頂部
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -33,7 +35,6 @@ export default function Works() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 監聽是否滑動到底部
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -52,7 +53,6 @@ export default function Works() {
     return () => observer.disconnect();
   }, []);
 
-  // 設定 1.8 秒後觸發第二行字
   useEffect(() => {
     if (isBottomVisible) {
       const timer = setTimeout(() => {
@@ -61,6 +61,15 @@ export default function Works() {
       return () => clearTimeout(timer);
     }
   }, [isBottomVisible]);
+
+  // 🌟 新增：處理 Modal 關閉的函式，加入延遲動畫
+  const closeModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedProject(null);
+      setIsClosing(false);
+    }, 300); // 對應 Tailwind duration-300
+  };
 
   const projects: Project[] = [
     {
@@ -170,7 +179,6 @@ export default function Works() {
         ))}
       </div>
 
-      {/* 底部打字機結尾 (兩階段打字效果) */}
       <div ref={bottomRef} className="w-full flex flex-col items-center justify-center mt-auto mb-2 pt-12 pb-4 border-t border-gray-200 min-h-[100px] shrink-0">
         {isBottomVisible && (
           <>
@@ -200,18 +208,18 @@ export default function Works() {
         )}
       </div>
 
-      {/* 放大彈出視窗 (Modal) 區塊 */}
+      {/* 🌟 修改：加入 isClosing 狀態控制退場動畫 */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300"
-          onClick={() => setSelectedProject(null)} 
+          className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm duration-300 ${isClosing ? "animate-out fade-out" : "animate-in fade-in"}`}
+          onClick={closeModal} 
         >
           <div 
-            className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300 relative flex flex-col max-h-[90vh]"
+            className={`bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl duration-300 relative flex flex-col max-h-[90vh] ${isClosing ? "animate-out zoom-out-95 fade-out" : "animate-in zoom-in-95 fade-in"}`}
             onClick={(e) => e.stopPropagation()} 
           >
             <button 
-              onClick={() => setSelectedProject(null)}
+              onClick={closeModal}
               className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-black/40 backdrop-blur-md text-white rounded-full hover:bg-black transition-colors"
             >
               <FiX size={18} />
