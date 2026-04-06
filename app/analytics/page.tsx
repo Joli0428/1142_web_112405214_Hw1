@@ -19,8 +19,6 @@ export default function Analytics() {
   const [isSecondLineVisible, setIsSecondLineVisible] = useState(false);
   
   const [selectedContent, setSelectedContent] = useState<ModalContent | null>(null);
-  
-  // 🌟 新增：控制退場動畫的狀態
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
@@ -61,13 +59,12 @@ export default function Analytics() {
     }
   }, [isBottomVisible]);
 
-  // 🌟 新增：處理 Modal 關閉的延遲函式
   const closeModal = () => {
     setIsClosing(true);
     setTimeout(() => {
       setSelectedContent(null);
       setIsClosing(false);
-    }, 300); // 對應 Tailwind duration-300
+    }, 300); 
   };
 
   const mainCoverContent: ModalContent = {
@@ -93,7 +90,7 @@ export default function Analytics() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-4 md:px-6 md:py-6 animate-in fade-in duration-700 overflow-x-hidden relative flex flex-col min-h-[calc(100vh-2rem)]">
+    <div className="w-full max-w-5xl mx-auto px-2 py-4 md:px-4 md:py-6 animate-in fade-in duration-700 overflow-x-hidden relative flex flex-col min-h-[calc(100vh-2rem)]">
       
       <div className="mb-1 min-h-[48px] flex items-center flex-wrap shrink-0">
         <TextType 
@@ -112,11 +109,10 @@ export default function Analytics() {
 
       <hr className="border-gray-400 mb-8 md:mb-10 shrink-0" />
 
-      <div className="flex-grow flex flex-col bg-white rounded-[2rem] shadow-2xl shadow-black/10 border border-gray-200 overflow-hidden mb-12">
+      <div className="flex-grow flex flex-col mb-12">
         
-        {/* 大首圖區塊 */}
         <div 
-          className="w-full aspect-video md:aspect-[21/9] bg-gray-100 relative overflow-hidden group cursor-pointer"
+          className="w-full aspect-video md:aspect-[21/9] bg-gray-100 relative overflow-hidden group cursor-pointer rounded-3xl shadow-lg border border-gray-200 mb-10"
           onClick={() => setSelectedContent(mainCoverContent)}
         >
           <img 
@@ -127,22 +123,22 @@ export default function Analytics() {
           
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 via-black/10 to-transparent pointer-events-none"></div>
           
-          <div className="absolute bottom-0 left-0 p-6 md:p-10 w-full z-10">
-            <div className="flex flex-wrap gap-2 mb-3">
+          {/* 🌟 針對手機版縮小 padding 和字體大小，並加入 whitespace-nowrap 防換行 */}
+          <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-10 w-full z-10">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3">
               {["SQL", "Python", "數據視覺化", "Tableau"].map((tag, i) => (
-                <span key={i} className="px-3 py-1 bg-transparent text-white/90 text-xs font-medium rounded-md border border-white/50 tracking-wider backdrop-blur-sm">
+                <span key={i} className="px-2 sm:px-3 py-1 bg-transparent text-white/90 text-[10px] sm:text-xs font-medium rounded-md border border-white/50 tracking-wider backdrop-blur-sm whitespace-nowrap">
                   {tag}
                 </span>
               ))}
             </div>
-            <h3 className="text-2xl md:text-4xl font-black text-white drop-shadow-lg">
+            <h3 className="text-xl sm:text-2xl md:text-4xl font-black text-white drop-shadow-lg leading-tight">
               政大數據分析社 NCCU DA 
             </h3>
           </div>
         </div>
 
-        {/* 內文與資訊區塊 */}
-        <div className="p-6 md:p-10 lg:p-12 flex flex-col md:flex-row gap-10 md:gap-16">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-16">
           
           <div className="flex-1 flex flex-col">
             <div>
@@ -167,23 +163,23 @@ export default function Analytics() {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div 
-                  className="aspect-[16/9] bg-gray-50 rounded-xl border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-all group cursor-pointer"
+                  className="aspect-[16/9] bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all group cursor-pointer p-1"
                   onClick={() => setSelectedContent(preview1Content)}
                 >
                   <img 
                     src="/da1.png" 
                     alt="問題拆解" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover rounded-lg transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div 
-                  className="aspect-[16/9] bg-gray-50 rounded-xl border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-all group cursor-pointer"
+                  className="aspect-[16/9] bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all group cursor-pointer p-1"
                   onClick={() => setSelectedContent(preview2Content)}
                 >
                   <img 
                     src="/da2.png" 
                     alt="矩陣報表" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover rounded-lg transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
               </div>
@@ -192,7 +188,7 @@ export default function Analytics() {
           </div>
 
           <div className="w-full md:w-72 shrink-0 flex flex-col gap-6">
-            <div className="bg-purple-50/50 p-6 rounded-2xl border border-purple-100">
+            <div className="bg-white/80 p-6 rounded-2xl border border-gray-200 shadow-sm">
               <h4 className="text-base font-bold text-purple-900 mb-5">
                 專案亮點
               </h4>
@@ -201,12 +197,12 @@ export default function Analytics() {
                   <div className="text-2xl font-black text-purple-600">22位</div>
                   <div className="text-sm text-gray-500 font-medium">裁判判決驗證</div>
                 </div>
-                <hr className="border-purple-100" />
+                <hr className="border-gray-100" />
                 <div>
                   <div className="text-2xl font-black text-purple-600">SQL / Python</div>
                   <div className="text-sm text-gray-500 font-medium">資料撈取與清理</div>
                 </div>
-                <hr className="border-purple-100" />
+                <hr className="border-gray-100" />
                 <div>
                   <div className="text-2xl font-black text-purple-600">Tableau</div>
                   <div className="text-sm text-gray-500 font-medium">視覺化與洞察報告</div>
@@ -224,7 +220,7 @@ export default function Analytics() {
                 查看部分簡報截錄 <FiExternalLink size={18} />
               </a>
 
-              <div className="flex items-start gap-2 bg-gray-50 p-4 rounded-xl border border-gray-200">
+              <div className="flex items-start gap-2 bg-white/80 p-4 rounded-xl border border-gray-200 shadow-sm">
                 <FiAlertCircle className="text-gray-400 shrink-0 mt-0.5" size={16} />
                 <p className="text-xs text-gray-500 leading-relaxed font-medium">
                   本專案已簽署保密協議 (NDA)。作品集中僅呈現個人獨立製作之內容（約完整專案五分之一），且敏感數據已進行模糊處理。
@@ -265,7 +261,6 @@ export default function Analytics() {
         )}
       </div>
 
-      {/* 🌟 根據 isClosing 狀態動態切換 animate-in 與 animate-out */}
       {selectedContent && (
         <div 
           className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm duration-300 ${isClosing ? "animate-out fade-out" : "animate-in fade-in"}`}
