@@ -24,7 +24,9 @@ export default function RootLayout({
 
           <Sidebar />
 
-          <div className="flex-1 bg-[#fafafa] rounded-3xl shadow-lg md:h-full overflow-y-auto p-6 md:p-12 lg:p-16 relative z-10">
+          {/* 🌟 關鍵修改：在 p-6 後面加上 pt-24（為手機版漢堡按鈕預留頂部空間）
+              md:p-12 會確保電腦版依然維持完美的對稱留白，不受 pt-24 影響！ */}
+          <div className="flex-1 bg-[#fafafa] rounded-3xl shadow-lg md:h-full overflow-y-auto p-6 pt-24 md:p-12 lg:p-16 relative z-10">
             {children}
           </div>
 

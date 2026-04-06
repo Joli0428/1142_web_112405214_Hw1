@@ -1,4 +1,4 @@
-"use client"; // 🌟 重新喚醒 React 的狀態管理能力
+"use client"; 
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -6,12 +6,9 @@ import Link from "next/link";
 import TextType from "../components/TextType";
 
 export default function Home() {
-  // 🌟 控制游標是否顯示的開關，預設為 true (打開)
   const [isCursorVisible, setIsCursorVisible] = useState(true);
 
   useEffect(() => {
-    // 根據我們的精密計算，整個打字＋刪除的動畫大約需要 4.46 秒
-    // 我們設定 4.6 秒後 (確保字都已經完全打完)，自動把游標隱藏起來！
     const timer = setTimeout(() => {
       setIsCursorVisible(false);
     }, 4600);
@@ -20,7 +17,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full w-full animate-in fade-in duration-700">
+    // 🌟 關鍵修改：加入 min-h-[calc(100vh-140px)] 讓手機版的卡片強制伸長到底部
+    // md:min-h-0 則確保在電腦版時，它不會因為這個設定而跑版
+    <div className="flex flex-col items-center justify-center w-full animate-in fade-in duration-700 h-full min-h-[calc(100vh-140px)] md:min-h-0">
       
       <div className="w-24 h-24 mb-6 rounded-full overflow-hidden bg-black flex items-center justify-center shadow-md group">
         <Image
@@ -32,7 +31,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="flex items-center justify-center text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-purple-600 mb-4 pb-1 h-10 md:h-12">
+      <div className="flex items-center justify-center text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-purple-600 mb-4 pb-1 h-10 md:h-12 text-center">
         <TextType 
           as="h1"
           text={["Hi, I'm JOLI", "Welcome to my site!"]} 
@@ -40,12 +39,12 @@ export default function Home() {
           deletingSpeed={40}
           pauseDuration={1500}
           loop={false}
-          showCursor={isCursorVisible} // 🌟 將游標綁定到我們剛剛設定的開關
+          showCursor={isCursorVisible} 
         />
       </div>
 
-      <div className="text-sm md:text-base text-gray-500 mb-8 tracking-wide">
-      我相信，如果每個人都充滿好奇心，世界會更美好 ✨
+      <div className="text-sm md:text-base text-gray-500 mb-8 tracking-wide text-center">
+        我相信，如果每個人都充滿好奇心，世界會更美好 ✨
       </div>
 
       <Link
