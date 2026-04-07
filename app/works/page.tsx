@@ -106,7 +106,7 @@ export default function Works() {
     {
       id: 5,
       title: "花東青少年合唱音樂營",
-      description: "參與籌辦花東音樂營，負責營期活動紀錄、宣傳短片與結業影片製作。透過自身專業回饋社會，以行動支持偏鄉教育營隊發展。結業影片在 Youtube 上創造超過 900 次觀看，相較於 2023 的結業影片，成長率高達 100%。",
+      description: "參與籌辦花東音樂營，負責營期活動紀錄、宣傳短片與結業影片製作。透過自身專業回饋社會，以行動支持偏鄉教育營隊發展。結業影片在 YouTube 上創造超過 900 次觀看，相較於 2023 的結業影片，成長率高達 100%。",
       imageUrl: "/summer.jpg",
       tags: ["影片拍攝", "專案執行","活動紀錄"],
       link: "https://youtu.be/KN36iUAMQM4?si=AiTs5V-ai7RZiTWW" 
@@ -114,7 +114,7 @@ export default function Works() {
     {
       id: 6,
       title: "人機介面與設計",
-      description: "使用 Figma 進行使用者介面設計，課程內容涵蓋平面設計基本原則（如完形心理學）、線框稿繪製（Wireframe）、製作 prototype 等。期末針對使用者介面進行重新設計，製作原形。",
+      description: "使用 Figma 進行使用者介面設計，課程內容涵蓋平面設計基本原則（如完形心理學）、線框稿繪製（Wireframe）、製作 prototype 等。期末針對使用者介面進行重新設計，製作原型。",
       imageUrl: "/figma.png",
       tags: ["平面設計", "Wireframe", "prototype"],
       link: "https://www.behance.net/gallery/244716207/_" 

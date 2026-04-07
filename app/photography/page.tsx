@@ -79,7 +79,7 @@ export default function Photography() {
     { id: 6, img: "/photo6.png", width: 800, height: 1200, title: "歲月靜好", description: "走過無數山海才明白，最動人的風景，是安靜角落裡那份波瀾不驚的守候。", alt: "歲月靜好" }, // 直
     { id: 1, img: "/photo1.png", width: 800, height: 533, title: "燈塔", description: "照亮孤寂的夜，指引迷航的人。你需要時，我都在。", alt: "燈塔" }, // 橫
     { id: 7, img: "/photo7.png", width: 800, height: 1200, title: "千山鳥飛", description: "絕，萬徑人蹤滅。如果此為真，或許地球會平靜許多。", alt: "千山鳥飛" }, // 直
-    { id: 2, img: "/photo2.png", width: 800, height: 533, title: "賽博人生", description: "當電話取代了實體互動，總感覺內心空蕩蕩的。昔日不在。", alt: "賽博人生" }, // 橫
+    { id: 2, img: "/photo2.png", width: 800, height: 533, title: "賽博人生", description: "當電話取代了實體互動，總感覺內心空蕩蕩的。昔日不再。", alt: "賽博人生" }, // 橫
     { id: 8, img: "/photo8.png", width: 800, height: 1200, title: "第一眼的山林", description: "來政大按下的第一張底片。傳奇的開端。有點自誇。", alt: "第一眼的山林" }, // 直
     { id: 3, img: "/photo3.png", width: 800, height: 533, title: "望天思", description: "寂靜的午，淡藍的天，平靜的你我。飛鳥相與還。", alt: "望天思" }, // 橫
     { id: 14, img: "/photo14.png", width: 800, height: 1200, title: "肖像", description: "深邃的眼珠，像是寶石。要小心幻影旅團。", alt: "肖像" }, // 直
